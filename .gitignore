@@ -31,6 +31,21 @@ coverage
 # Bower dependency directory (https://bower.io/)
 bower_components
 
+build/
+
+/build
+
+dist/
+
+/dist
+
+.vscode/
+
+.idea/
+
+lib/
+
+
 # node-waf configuration
 .lock-wscript
 
@@ -39,6 +54,7 @@ build/Release
 
 # Dependency directories
 node_modules/
+/node_modules
 jspm_packages/
 
 # TypeScript v1 declaration files
