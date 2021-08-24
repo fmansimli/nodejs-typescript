@@ -5,13 +5,12 @@
   "main": "src/server.ts",
   "scripts": {
     "dev": "nodemon --exec ts-node src/server.ts",
-    "build:es6": "babel src -d dist",
-    "start": "npm run build && nodemon dist/server.js",
-    "serve": "npm run build && node dist/server.js",
-    "test": "npm run build && mocha --require @babel/register",
+    "start": "npm run build && node lib/server.js",
+    "build": "npm run build:types && npm run build:js",
+    "clear:win": "rimraf lib",
+    "clear:linux": "rm -rf lib",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "build": "npm run build:types && npm run build:js",
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline"
   },
