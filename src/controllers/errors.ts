@@ -1,14 +1,9 @@
-import { Response, Request, NextFunction, Errback } from "express";
+import { Response, Request } from "express";
 
-export async function get404(req: Request, res: Response, next: NextFunction) {
+export async function get404(req: Request, res: Response) {
   res.status(404).json();
 }
 
-export async function handleError(
-  err: Errback,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+export async function handleError(err: any, req: Request, res: Response) {
   res.status(500).json();
 }
