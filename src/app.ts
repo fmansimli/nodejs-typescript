@@ -22,7 +22,7 @@ app.use(
     credentials: true,
     origin: ["*"],
     optionsSuccessStatus: 200,
-  })
+  }),
 );
 
 app.use("/api", indexRouter);

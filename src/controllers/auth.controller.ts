@@ -1,19 +1,21 @@
 import { RequestHandler } from "express";
 import User, { IUser } from "../models/user";
 
-export const login: RequestHandler = (req, res, next) => {
-  res.status(200).json({
-    accessToken: "dfklkdlfk_dfdknfd",
-    user: {
-      email: "test@mail.ru",
-      username: "fmansimli",
-    },
-    meta: {
-      success: true,
-      message: "logged in!",
-      url: req.originalUrl,
-    },
-  });
+export const login: RequestHandler = async (req, res, next) => {
+  try {
+    const user = await User.findOne({ username: "fmansimli" });
+    res.status(200).json({
+      user,
+      accessToken: "dfklkdlfk_dfdknfd",
+      meta: {
+        success: true,
+        message: "logged in!",
+        url: req.originalUrl,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const register: RequestHandler = async (req, res, next) => {

@@ -1,11 +1,9 @@
 import http from "http";
 
 import app from "./app";
-import { connectDb } from "./db/db";
+import { MyDatabase, AppConfig } from "./config";
 
-import { initializeAppConfig } from "./config/config";
-
-initializeAppConfig();
+AppConfig.initialize();
 
 const httpServer = http.createServer(app);
 
@@ -13,8 +11,8 @@ const PORT = process.env.PORT || 5000;
 
 httpServer.listen(PORT, async () => {
   try {
-    await connectDb();
-    console.log("@@@@ monfodb connected!");
+    await MyDatabase.connect();
+    console.log("@@@@ mongodb connected!");
   } catch (error: any) {
     console.log(`$$$ db connection error! (${error.messsage})`);
   } finally {

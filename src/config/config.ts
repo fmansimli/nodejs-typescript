@@ -1,5 +1,10 @@
 import dotenv from "dotenv";
+//import "../services/cache";
 
-export const initializeAppConfig = () => {
-  dotenv.config();
-};
+class AppConfig {
+  static initialize() {
+    dotenv.config();
+  }
+}
+
+export default AppConfig;

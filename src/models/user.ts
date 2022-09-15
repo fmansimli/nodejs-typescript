@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import Password from "../utils/Password";
+import Password from "../utils/password";
 
 export interface IUser {
   username: string;
