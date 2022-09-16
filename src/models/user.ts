@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose";
+import mongoose, { model, Schema } from "mongoose";
 import Password from "../utils/password";
 
 export interface IUser {
@@ -26,6 +26,14 @@ userSchema.pre("save", async function (done) {
     this.set("password", hashed);
   }
   done();
+});
+
+userSchema.pre("remove", function (next) {
+  mongoose
+    .model("post")
+    .deleteMany({ user: this.get("_id") })
+    .then(() => next())
+    .catch(err => err);
 });
 
 export default model<IUser>("User", userSchema);
